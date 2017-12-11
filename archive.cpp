@@ -23,7 +23,7 @@ private:
       std::time_t t = std::time(nullptr);
       std::tm tm = *std::localtime(&t);
       int n = std::strftime(buffer_, sizeof(buffer_), time_fmt.c_str(), &tm);
-      std::string new_output_fname = output_prefix + "/" + buffer_;
+      std::string new_output_fname = output_prefix + buffer_;
       if(new_output_fname!=output_fname){
         std::lock_guard<std::mutex> guard(of_mutex);
         of.close();
